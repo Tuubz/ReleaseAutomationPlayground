@@ -26,9 +26,11 @@ jobs:
         run: |
           VERSION_NAME=$(kscript get_version.kts)
           echo $VERSION_NAME
+          echo $VERSION_NAME >> $GITHUB_ENV
 
       - name: Use the value
         run: |
+
           echo $VERSION_NAME
 
 #      - name: Create Release

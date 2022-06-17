@@ -10,11 +10,12 @@ object GetVersion {
             ?.replace("\"", "")
             ?.trim()
 
-        executeCommand("echo VERSION_NAME=$versionName >> \$GITHUB_ENV")
+        executeCommand("echo \"VERSION_NAME=$versionName >> \$GITHUB_ENV\"")
     }
 
     private fun executeCommand(command: String) {
         val process = Runtime.getRuntime().exec(command)
+        process.inputStream.reader().forEachLine { println(it) }
     }
 }
 

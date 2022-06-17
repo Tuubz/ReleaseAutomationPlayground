@@ -27,7 +27,7 @@ jobs:
 
       - name: Use the value
         run: echo ${{env.VERSION_NAME}}
-
+# lol
 #      - name: Create Release
 #        id: create_release
 #        uses: actions/create-release@v1

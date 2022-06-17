@@ -2,21 +2,15 @@ import java.io.File
 
 object GetVersion {
 
-    fun search() {
-        val versionName = File("Versions.kts")
+    fun search(): String? {
+        return File("Versions.kts")
             .readLines()
             .find { it.contains("ANDROID_VERSION_NAME") }
             ?.substringAfter("=")
             ?.replace("\"", "")
             ?.trim()
-
-        executeCommand("echo echo \"VERSION_NAME=$versionName >> \$GITHUB_ENV\"")
-    }
-
-    private fun executeCommand(command: String) {
-        val process = Runtime.getRuntime().exec(command)
-        process.inputStream.reader().forEachLine { println(it) }
     }
 }
 
-GetVersion.search()
+val version = GetVersion.search()
+println(version)

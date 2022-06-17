@@ -23,7 +23,9 @@ jobs:
 
       - name: Get Version
         working-directory: scripts
-        run: kscript get_version.kts
+        run: |
+          VERSION_NAME=$(kscript get_version.kts)
+          echo $VERSION_NAME
 
       - name: Use the value
         run: |

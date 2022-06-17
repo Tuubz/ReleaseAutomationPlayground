@@ -28,20 +28,6 @@ jobs:
       - name: Use the value
         run: echo ${{env.VERSION_NAME}}
 
-<<<<<<< Updated upstream
-#      - name: Create Release
-#        id: create_release
-#        uses: actions/create-release@v1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
-#        with:
-#          tag_name: ${{ github.ref }}
-#          release_name: Release ${{ github.ref }}
-#          body: |
-#            Changes in this Release
-#            - First Change
-#            - Second Change
-=======
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -50,4 +36,3 @@ jobs:
         with:
           tag_name: ${{env.VERSION_NAME}}
           release_name: ${{env.VERSION_NAME}}
->>>>>>> Stashed changes

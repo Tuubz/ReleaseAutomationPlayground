@@ -24,14 +24,12 @@ jobs:
       - name: Get Version
         working-directory: scripts
         run: |
-          VERSION_NAME=$(kscript get_version.kts)
-          echo $VERSION_NAME
-          echo $VERSION_NAME >> $GITHUB_ENV
+          echo "toby=$(kscript get_version.kts)" >> $GITHUB_ENV
 
       - name: Use the value
         run: |
-
           echo $VERSION_NAME
+          echo ${{env.toby}}
 
 #      - name: Create Release
 #        id: create_release

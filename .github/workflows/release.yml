@@ -12,17 +12,34 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
-          draft: false
-          prerelease: false
+
+      - name: Install Kscript
+        run: |
+          curl -s "https://get.sdkman.io" | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk install kotlin 1.6.21
+          sdk install kscript 4.0.3
+          echo $PATH >> $GITHUB_PATH
+
+      - name: Get Version
+        working-directory: scripts
+        run: kscript get_version.kts
+
+      - name: Use the value
+        run: |
+          echo "${{ env.VERSION_NAME }}"
+
+#      - name: Create Release
+#        id: create_release
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
+#        with:
+#          tag_name: ${{ github.ref }}
+#          release_name: Release ${{ github.ref }}
+#          body: |
+#            Changes in this Release
+#            - First Change
+#            - Second Change
+#          draft: false
+#          prerelease: false

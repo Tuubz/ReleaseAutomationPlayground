@@ -23,13 +23,10 @@ jobs:
 
       - name: Get Version
         working-directory: scripts
-        run: |
-          VERSION_NAME=$(kscript get_version.kts)
-          echo $VERSION_NAME >> $GITHUB_ENV
+        run: echo "VERSION_NAME=$(kscript get_version.kts)" >> $GITHUB_ENV
 
       - name: Use the value
-        run: |
-          echo ${{env.VERSION_NAME}}
+        run: echo ${{env.VERSION_NAME}}
 
 #      - name: Create Release
 #        id: create_release

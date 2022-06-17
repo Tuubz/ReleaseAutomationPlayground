@@ -21,7 +21,7 @@ jobs:
           sdk install kscript 4.0.3
           echo $PATH >> $GITHUB_PATH
 
-      - name: Get Version
+      - name: Set Version
         working-directory: scripts
         run: echo "VERSION_NAME=$(kscript get_version.kts)" >> $GITHUB_ENV
 
@@ -40,5 +40,3 @@ jobs:
 #            Changes in this Release
 #            - First Change
 #            - Second Change
-#          draft: false
-#          prerelease: false

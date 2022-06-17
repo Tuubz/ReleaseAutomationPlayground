@@ -25,7 +25,7 @@ jobs:
         working-directory: scripts
         run: |
           VERSION_NAME=$(kscript get_version.kts)
-          echo "$VERSION_NAME" >> $GITHUB_ENV
+          echo $VERSION_NAME >> $GITHUB_ENV
 
       - name: Use the value
         run: |

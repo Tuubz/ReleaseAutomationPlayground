@@ -5,7 +5,10 @@ object GetVersion {
     private const val PATTERN_VERSION = "[0-9].[0-9].[0-9]"
 
     fun search(commitMessage: String): String? {
-        return commitMessage
+        return PATTERN_VERSION
+            .toRegex()
+            .find(commitMessage)
+            ?.value
     }
 }
 

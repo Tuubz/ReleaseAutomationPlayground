@@ -7,6 +7,8 @@ name: Create Release
 
 jobs:
   build:
+    env:
+      lastCommitMessage: ${{ github.event.head_commit.message }}
     name: Create Release
     runs-on: ubuntu-latest
     steps:
@@ -23,15 +25,16 @@ jobs:
 
       - name: Set Version
         working-directory: scripts
-        run: echo "VERSION_NAME=$(kscript get_version.kts)" >> $GITHUB_ENV
+        run: echo $lastCommitMessage
 
-      - name: Use the value
-        run: echo ${{env.VERSION_NAME}}
+#      - name: Use the value
+#        run: echo ${{env.VERSION_NAME}}
 
-      - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{env.VERSION_NAME}}
-          release_name: ${{env.VERSION_NAME}}
+#      - name: Create Release
+#        uses: actions/github-script@4.0.2
+#        with:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+#          script: |
+#              await github.request(``
+#          tag_name: ${{env.VERSION_NAME}}
+#          release_name: ${{env.VERSION_NAME}}

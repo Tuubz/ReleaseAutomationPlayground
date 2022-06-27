@@ -7,8 +7,6 @@ name: Create Release
 
 jobs:
   build:
-    env:
-      lastCommitMessage: ${{ github.event.head_commit.message }}
     name: Create Release
     runs-on: ubuntu-latest
     steps:
@@ -25,7 +23,10 @@ jobs:
 
       - name: Set Version
         working-directory: scripts
-        run: echo "VERSION_NAME=$(kscript get_version.kts '$lastCommitMessage')" >> $GITHUB_ENV
+        run: |
+          COMMIT_MESSAGE=${{ github.event.head_commit.message }}
+          VERSION_NAME=$(kscript get_version.kts '$lastCommitMessage')
+          echo $VERSION_NAME >> $GITHUB_ENV
 
       - name: Use the value
         run: echo ${{env.VERSION_NAME}}

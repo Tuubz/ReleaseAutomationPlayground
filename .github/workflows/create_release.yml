@@ -25,7 +25,7 @@ jobs:
 
       - name: Set Version
         working-directory: scripts
-        run: echo "VERSION_NAME=$(kscript get_version.kts commit-message=\"$lastCommitMessage\")" >> $GITHUB_ENV
+        run: echo "VERSION_NAME=$(kscript get_version.kts \"$lastCommitMessage\")" >> $GITHUB_ENV
 
       - name: Use the value
         run: echo ${{env.VERSION_NAME}}

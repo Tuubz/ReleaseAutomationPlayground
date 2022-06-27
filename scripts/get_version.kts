@@ -4,7 +4,7 @@ object GetVersion {
 
     fun search(args: Array<String>): String? {
         val commitMessage = args.first()
-        return commitMessage + "TUUBZ"
+        return commitMessage
     }
 }
 

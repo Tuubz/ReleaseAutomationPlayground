@@ -26,7 +26,7 @@ jobs:
         run: |
           COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
           VERSION_NAME=$(kscript get_version.kts $COMMIT_MESSAGE)
-          echo $VERSION_NAME >> $GITHUB_ENV
+          echo $VERSION_NAME
 
-      - name: Use the value
-        run: echo ${{env.VERSION_NAME}}
+#      - name: Use the value
+#        run: echo ${{env.VERSION_NAME}}

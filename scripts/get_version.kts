@@ -4,7 +4,8 @@ object GetVersion {
 
     fun search(args: Array<String>): String? {
         val commitMessage = args.first()
-        return commitMessage + "TUUBZ"
+        val version = commitMessage.matches("/(?<=release\\/).[^\\s]+/g")
+        return version
     }
 }
 

@@ -8,5 +8,5 @@ object GetVersion {
     }
 }
 
-val version = GetVersion.search()
+val version = GetVersion.search(args)
 println(version)

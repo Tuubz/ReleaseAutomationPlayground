@@ -25,10 +25,10 @@ jobs:
 
       - name: Set Version
         working-directory: scripts
-        run: echo $lastCommitMessage
+        run: echo "VERSION_NAME=$(kscript get_version.kts $lastCommitMessage)" >> $GITHUB_ENV
 
-#      - name: Use the value
-#        run: echo ${{env.VERSION_NAME}}
+      - name: Use the value
+        run: echo ${{env.VERSION_NAME}}
 
 #      - name: Create Release
 #        uses: actions/github-script@4.0.2

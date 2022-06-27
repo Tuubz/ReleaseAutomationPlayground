@@ -1,12 +1,18 @@
 import java.io.File
 
 object GetVersion {
-    fun search(args: Array<String>): String? {
-        val commitMessage = args.first()
-        val version = commitMessage.substringAfterLast("/")
-        return version
+
+    private const val PATTERN_VERSION = "[0-9].[0-9].[0-9]"
+
+    fun search(commitMessage: String): String? {
+        return PATTERN_VERSION
+            .toRegex()
+            .find(commitMessage)
+            ?.value
     }
 }
 
-val version = GetVersion.search(args)
+val version = GetVersion.search(
+    commitMessage = args.first()
+)
 println(version)

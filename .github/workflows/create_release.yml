@@ -30,4 +30,4 @@ jobs:
           echo $VERSION_NAME >> $GITHUB_PATH
 
       - name: Print Version
-        run: echo $VERSION_NAME
+        run: echo ${{env.VERSION_NAME}}

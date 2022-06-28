@@ -25,8 +25,8 @@ jobs:
         working-directory: scripts
         run: |
           COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
-          VERSION_NAME=$(kscript get_version.kts "$COMMIT_MESSAGE")
-          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
+          VERSION=$(kscript get_version.kts "$COMMIT_MESSAGE")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Print Version
         run: echo ${{ env.VERSION_NAME }}
